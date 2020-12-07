@@ -95,12 +95,9 @@ export class CredentialsApi {
     /**
      * 获取上传凭证
      * @summary 获取上传凭证
-     * @param timestamp 
-     * @param noncestr 
-     * @param signature 
      * @param credentialsReq 
      */
-    public async credentials (timestamp?: string, noncestr?: string, signature?: string, credentialsReq?: CredentialsReq, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CredentialsRsp;  }> {
+    public async credentials (credentialsReq?: CredentialsReq, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.ClientResponse; body: CredentialsRsp;  }> {
         const localVarPath = this.basePath + '/credentials';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -113,9 +110,6 @@ export class CredentialsApi {
         }
         let localVarFormParams: any = {};
 
-        localVarHeaderParams['Timestamp'] = ObjectSerializer.serialize(timestamp, "string");
-        localVarHeaderParams['Noncestr'] = ObjectSerializer.serialize(noncestr, "string");
-        localVarHeaderParams['Signature'] = ObjectSerializer.serialize(signature, "string");
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -149,7 +143,7 @@ export class CredentialsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CredentialsRsp;  }>((resolve, reject) => {
+            return new Promise<{ response: http.ClientResponse; body: CredentialsRsp;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
