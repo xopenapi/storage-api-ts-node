@@ -100,7 +100,7 @@ export class CredentialsApi {
      * @param signature 
      * @param credentialsReq 
      */
-    public async credentials (timestamp?: string, noncestr?: string, signature?: string, credentialsReq?: CredentialsReq, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.ClientResponse; body: CredentialsRsp;  }> {
+    public async credentials (timestamp?: string, noncestr?: string, signature?: string, credentialsReq?: CredentialsReq, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CredentialsRsp;  }> {
         const localVarPath = this.basePath + '/credentials';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -149,7 +149,7 @@ export class CredentialsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.ClientResponse; body: CredentialsRsp;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CredentialsRsp;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
