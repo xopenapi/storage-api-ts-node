@@ -1,5 +1,5 @@
 {
-  "name": "storage-api-ts-node",
+  "name": "storage-api-js-node",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
